@@ -8,6 +8,7 @@ public class DoorQuery : MonoBehaviour
     // THIS SCRIPT ALLOWS FOR DOORS TO QUESTION THE ACTIVE STATE OF ANY OBJECT. WHILE INACTIVE, IT WILL BE CLOSED. WHILE ACTIVE IT WILL BE OPEN.
 
     public bool should_be_active = false; // If the door should be active
+    public bool is_inverted = false; // If the door should act as if it receives the opposite input
 
     public Transform player;
 
@@ -32,15 +33,31 @@ public class DoorQuery : MonoBehaviour
             should_be_active = activator.GetComponent<PermaButtonActivator>().RequestState();
         }
 
-        if (should_be_active == true)
+        if (activator_type == 2)
+        {
+            should_be_active = activator.GetComponent<StandingButtonActivator>().RequestState();
+        }
+
+        if (should_be_active == true && is_inverted == false)
         {
             transform.position = active_location;
         }
 
-        if (should_be_active == false)
+        if (should_be_active == false && is_inverted == false)
         {
             transform.position = inactive_location;
         }
+
+        if (should_be_active == true && is_inverted == true)
+        {
+            transform.position = inactive_location;
+        }
+
+        if (should_be_active == false && is_inverted == true)
+        {
+            transform.position = active_location;
+        }
+
 
     }
 

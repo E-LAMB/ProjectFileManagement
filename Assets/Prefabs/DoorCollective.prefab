@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   should_be_active: 0
-  player: {fileID: 0}
+  player: {fileID: 8082893926766985305}
   inactive_location: {x: 0, y: 0, z: 0}
   active_location: {x: 0, y: 0, z: 0}
   activator: {fileID: 0}
