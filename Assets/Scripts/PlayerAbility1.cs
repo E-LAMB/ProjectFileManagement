@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAbility : MonoBehaviour
+public class PlayerAbility1 : MonoBehaviour
 {
 
     public Transform player_trans;
@@ -15,20 +15,19 @@ public class PlayerAbility : MonoBehaviour
 
     public GameObject clone; // What is this object's clone
 
-    public Vector3 clone_position;
+    public GameObject activator; // What activates this object
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Vector3 clone_position;
+    public bool should_be_active = false;
+
 
     // Update is called once per frame
     void Update()
     {
         isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
+        should_be_active = activator.GetComponent<PermaButtonActivator>().RequestState();
 
-        if (isOnGround == true && Input.GetKeyDown(KeyCode.Q))
+        if (isOnGround == true && Input.GetKeyDown(KeyCode.Q) && should_be_active == true)
         {
             clone_position = transform.position;
             clone.GetComponent<Teleport>().Warp(transform.position);
