@@ -12,8 +12,8 @@ public class DoorQuery : MonoBehaviour
 
     public Transform player;
 
-    public Vector3 inactive_location; // Where the door should be when not activated (Both of these refer to Y position)
-    public Vector3 active_location; // Where the door should be when activated
+    Vector3 inactive_location; // Where the door should be when not activated (Both of these refer to Y position)
+    Vector3 active_location; // Where the door should be when activated
 
     public GameObject activator; // What activates this object
 
@@ -22,7 +22,12 @@ public class DoorQuery : MonoBehaviour
     // 2 - Standing Button
     // 3 - Timed Button //
 
-    Vector3 moving_position;
+    void Start()
+    {
+        inactive_location = transform.position;
+        active_location = transform.position;
+        active_location.y = transform.position.y - 2000f;
+    }
 
     // Update is called once per frame
     void FixedUpdate()

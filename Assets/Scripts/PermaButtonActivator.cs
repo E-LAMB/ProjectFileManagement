@@ -12,6 +12,8 @@ public class PermaButtonActivator : MonoBehaviour
     public GameObject playerChecker;
     public LayerMask playerLayer;
 
+    public GameObject prompt_is_what; // What is the prompt?
+
     public float distance_required = 1.0f;
 
     bool is_close;
@@ -22,10 +24,26 @@ public class PermaButtonActivator : MonoBehaviour
 
         is_close = Physics.CheckSphere(playerChecker.transform.position, distance_required, playerLayer);
 
-        if (Input.GetKeyDown(KeyCode.Alpha0) && is_close == true)
+        if (Input.GetKeyDown(KeyCode.F) && is_close == true)
         {
             active_state = true;
         }
+
+        if (is_close == true && active_state == false)
+        {
+            prompt_is_what.GetComponent<PromptAppear>().appear();
+        }
+
+        if (is_close == false && active_state == false)
+        {
+            prompt_is_what.GetComponent<PromptAppear>().vanish();
+        }
+
+        if (active_state == true)
+        {
+            prompt_is_what.GetComponent<PromptAppear>().vanish();
+        }
+
     }
 
     public bool RequestState()
