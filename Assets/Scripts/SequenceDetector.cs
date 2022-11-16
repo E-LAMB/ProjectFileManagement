@@ -5,16 +5,19 @@ using UnityEngine;
 public class SequenceDetector : MonoBehaviour
 {
     // Start is called before the first frame update
-    public myDetector myDetector;
+
+    public bool active_state = false;
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Player")
-        {
-            myDetector.should_be_active = true;
-        }
+        active_state = true;
 
+    }
+
+    public bool RequestState()
+    {
+        return active_state;
     }
 
 }

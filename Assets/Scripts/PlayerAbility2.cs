@@ -33,7 +33,7 @@ public class PlayerAbility2 : MonoBehaviour
             clone.GetComponent<Teleport>().Warp(transform.position);
         }
 
-        if (isOnGround == true && Input.GetKeyDown(KeyCode.E))
+        if (isOnGround == true && Input.GetKeyDown(KeyCode.E) && should_be_active == true)
         {
             transform.position = clone_position;
         }
