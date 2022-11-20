@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PFM_LEVEL_2.unity
     guid: a5d13a0ae6347424e970e6c52ee15f5b
+  - enabled: 1
+    path: Assets/Scenes/PFM_LEVEL_3.unity
+    guid: 8f04877d4694a7d4baa4944ba2414f27
   m_configObjects: {}
